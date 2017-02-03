@@ -4,17 +4,15 @@ Web制作用に必要なアイコンフォント、Webフォント、ディレ�
 # gulp
 ## インストールしたパッケージ
 - [browser-sync](https://www.npmjs.com/package/browser-sync "browser-sync")
+- [gulp-webserver](https://www.npmjs.com/package/gulp-webserver "gulp-webserver")
 - [gulp-cached](https://www.npmjs.com/package/gulp-cached "gulp-cached")
 - [gulp-if](https://www.npmjs.com/package/gulp-if "gulp-if")
-- [gulp-stylus](https://www.npmjs.com/package/gulp-stylus "gulp-stylus")
-- [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer "gulp-autoprefixer")
 - [gulp-plumber](https://www.npmjs.com/package/gulp-plumber "gulp-plumber")
-- [gulp-sftp](https://www.npmjs.com/package/gulp-sftp "gulp-sftp")
-- [gulp-stylus](https://www.npmjs.com/package/gulp-stylus "gulp-stylus")
-- [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css "gulp-minify-css")
-- [gulp-webserver](https://www.npmjs.com/package/gulp-webserver "gulp-webserver")
 - [require-dir](https://www.npmjs.com/package/require-dir "require-dir")
 - [minimist](https://www.npmjs.com/package/minimist "minimist")
+- [gulp-stylus](https://www.npmjs.com/package/gulp-stylus "gulp-stylus")
+- [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer "gulp-autoprefixer")
+- [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css "gulp-minify-css")
 - [del](https://www.npmjs.com/package/del "del")
 
 ## ディレクトリ構成
