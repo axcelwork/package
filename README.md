@@ -43,8 +43,8 @@ libs
 ## Config
 ```
 module.exports = {
-  port : 5007,
-  proxy : 'fb-yamaji.local:2007',
+  port : xxxx,
+  proxy : 'xxxxxx',
   stylus_minify : false,
   autoprefixer : {
     browsers : ["last 2 versions", "ie 10", "ios 10", "android 4.2"]
