@@ -5,6 +5,8 @@ module.exports = {
   autoprefixer : {
     browsers : ["last 2 versions", "ie 10", "ios 10", "android 4.2"]
   },
+  zip_name : 'xxxxx.zip',
+  encoding : "shift_jis",
 
   paths : {
     base: '../htdocs',

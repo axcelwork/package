@@ -12,7 +12,7 @@ var gulp = require("gulp"),
 
 gulp.task('stylus', function() {
   return gulp
-  .src([config.paths.stylus,'!./src/**/_*.styl'])
+  .src([config.paths.stylus,'!../src/_modules/*'])
   .pipe(cache( 'stylus' ))
   .pipe(plumber())
   .pipe(stylus())
