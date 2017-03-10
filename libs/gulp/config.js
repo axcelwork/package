@@ -14,7 +14,7 @@ module.exports = {
     branches: '../branches',
     dist : '../dist',
     src : '../src',
-    stylus: './src/**/*.styl',
+    stylus: '../src/**/*.styl',
     js : '../htdocs/**/*.js',
     css : '../htdocs/**/*.css',
     html : '../htdocs/**/*.html',
