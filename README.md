@@ -36,9 +36,13 @@ libs
   └ tasks
     ├ connect-sync.js
     ├ stylus.js
+    ├ zip.js
     └ watch.js
 
-src - [開発用]
+src - [開発用：ここに書いたCSSが htdocs にディレクトリ構造を保って出力される]
+├ cmn
+│ └css
+└ css
 ```
 
 ## Usage
