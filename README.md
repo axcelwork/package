@@ -41,6 +41,8 @@ libs
     └ watch.js
 
 src - [開発用：ここに書いたCSSが htdocs にディレクトリ構造を保って出力される]
+├ _modules
+│ └ _common_func.styl
 ├ cmn
 │ └css
 │  └ reset.styl
