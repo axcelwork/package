@@ -6,7 +6,7 @@ module.exports = {
     browsers : ["last 2 versions", "ie 10", "ios 10", "android 4.2"]
   },
   zip_name : 'xxxxx.zip',
-  encoding : "shift_jis",
+  encoding : "utf-8",
 
   paths : {
     base: '../htdocs',
@@ -14,6 +14,7 @@ module.exports = {
     branches: '../branches',
     dist : '../dist',
     src : '../src',
+    pcss: '../dev/**/*.css',
     stylus: '../src/**/*.styl',
     js : '../htdocs/**/*.js',
     css : '../htdocs/**/*.css',
