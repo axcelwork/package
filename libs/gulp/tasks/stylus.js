@@ -4,7 +4,7 @@ var gulp = require("gulp"),
     stylus = require("gulp-stylus"),
     cache = require('gulp-cached'),
     autoprefixer = require("gulp-autoprefixer"),
-    minify = require("gulp-minify-css"),
+    minify = require("gulp-clean-css"),
     browserSync = require('browser-sync'),
 
     config = require("../config");

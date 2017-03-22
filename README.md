@@ -10,7 +10,7 @@ Web制作用に必要なアイコンフォント、Webフォント、ディレ�
 - [gulp-plumber](https://www.npmjs.com/package/gulp-plumber "gulp-plumber")
 - [gulp-stylus](https://www.npmjs.com/package/gulp-stylus "gulp-stylus")
 - [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer "gulp-autoprefixer")
-- [gulp-minify-css](https://www.npmjs.com/package/gulp-minify-css "gulp-minify-css")
+- [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css "gulp-clean-css")
 - [gulp-zip](https://www.npmjs.com/package/gulp-zip "gulp-zip")
 - [gulp-uglify](https://www.npmjs.com/package/gulp-uglify "gulp-uglify")
 - [gulp-convert-encoding](https://www.npmjs.com/package/gulp-convert-encoding "gulp-convert-encoding")
