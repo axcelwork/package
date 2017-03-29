@@ -1,6 +1,6 @@
 var gulp = require("gulp"),
 		plumber = require("gulp-plumber"),
-    config = require("../config"),
+    config = require("../config/config"),
     requireDir = require( "require-dir" );
 
 requireDir( "../tasks", { recursive : true } );

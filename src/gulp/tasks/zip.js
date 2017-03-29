@@ -4,7 +4,7 @@ var gulp = require("gulp"),
 	plumber = require("gulp-plumber"),
 	rimraf = require('rimraf'),
 	minimist = require('minimist'),
-	config = require("../config"),
+	config = require("../config/config"),
 	requireDir = require( "require-dir" );
 
 requireDir( "../tasks", { recursive : true } );
@@ -14,15 +14,16 @@ var argv = minimist(process.argv.slice(2));
 gulp.task('source', ['clean'], function(cb) {
 
 	if( argv.path ){
-	 	$local = config.paths.base + argv.path + '/**/*';
+	 	$local = config.paths.base + '/' + argv.path + '/**/*';
 	}
 	else {
 		$local = config.paths.base;
 	}
 
+	console.log(config.paths.base + argv.path);
 	return gulp
 	.src( $local )
-	.pipe( gulp.dest( config.paths.dist + argv.path ) );
+	.pipe( gulp.dest( config.paths.dist + '/' + argv.path ) );
 });
 
 
@@ -34,5 +35,5 @@ gulp.task('zip', ['source'], function(cb ) {
 });
 
 gulp.task('clean', function(cb) {
-	rimraf('../dist', cb);
+	rimraf( config.paths.dist , cb);
 });

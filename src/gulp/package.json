@@ -15,7 +15,6 @@
     "gulp-cached": "^1.1.1",
     "gulp-if": "^1.2.5",
     "gulp-plumber": "^1.1.0",
-    "gulp-aigis": "^1.0.0",
     "gulp-stylus": "^2.6.0",
     "gulp-clean-css": "3.0.4",
     "gulp-autoprefixer": "^3.1.1",

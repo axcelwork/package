@@ -1,0 +1,103 @@
+@charset "utf-8";
+@import "../_modules/_common_func";
+
+/*
+Button
+
+ボタンです。
+
+Markup:
+<div class="button"><a href="#">Button</a></div>
+
+Styleguide 1.0.0
+```
+*/
+.button-link {
+	display: inline-block;
+	width: 100%;
+	padding: 18px;
+
+	background-color: key-color;
+	border: 1px solid key-color;
+
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: 1px;
+	text-decoration: none;
+	color: #fff;
+
+	pos-rel-init();
+
+	&:hover {
+		background-color: #333;
+		border-color: #333;
+	}
+
+	&:before {
+		icon-init();
+		pos-abs-init();
+
+		content: '\e902';
+		font-size 14px
+		left: 3%;
+		top 0
+		bottom 0
+	}
+
+	&.other {
+		background-color: #fffc00;
+		border: 1px solid #d6d6d6;
+		color: #000;
+
+		&:before {
+			left: auto;
+			right: 3%;
+		}
+
+		&:hover {
+			background-color: #333;
+			border: 1px solid #d6d6d6;
+			color: #fff;
+		}
+	}
+
+	&.back {
+		background-color: #fff;
+		border: 1px solid #d7dae9;
+		color: #000;
+
+		&:before {
+			content: '\e901';
+		}
+
+		&:hover {
+			background-color: #333;
+			border: 1px solid #d6d6d6;
+			color: #fff;
+		}
+	}
+}
+
+/*
+---
+name: Heading
+category:
+  - base
+tag:
+  - base
+compile: false
+---
+
+Button styles.
+* Base button style.
+* Use `a` or `button` tag.
+
+```html
+<a class="ag-btn">Button</a>
+<button class="ag-btn ag-btn--primary">Button</button>
+```
+*/
+h1 {
+    font-size 22px
+}

@@ -7,12 +7,12 @@ var gulp = require("gulp"),
     minify = require("gulp-clean-css"),
     browserSync = require('browser-sync'),
 
-    config = require("../config");
+    config = require("../config/config");
 
 
 gulp.task('stylus', function() {
   return gulp
-  .src([config.paths.stylus,'!../src/_modules/*'])
+  .src([config.paths.src + config.paths.stylus,'!' + config.paths.src + '/stylus/_modules/*'])
   .pipe(cache( 'stylus' ))
   .pipe(plumber())
   .pipe(stylus())

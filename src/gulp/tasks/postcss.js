@@ -7,7 +7,7 @@ var gulp = require("gulp"),
     postcss = require('gulp-postcss'),
     cssnext = require('postcss-cssnext'),
 
-    config = require("../config");
+    config = require("../config/config");
 
 
 gulp.task('pcss', function() {
