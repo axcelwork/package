@@ -285,10 +285,10 @@ gulp.task('tocss', ['clean'], function() {
 });
 ```
 
-## PostCSS mixins
+# PostCSS mixins
 mixins を幾つかご用意しました
 
-### Position系
+## Position系
 ```
 @define-mixin psr {
 	position: relative;
@@ -302,7 +302,7 @@ mixins を幾つかご用意しました
 }
 ```
 
-### アイコンフォント初期設定
+## アイコンフォント初期設定
 ```
 @define-mixin iconinit {
 	display: inline-block;
@@ -316,7 +316,7 @@ mixins を幾つかご用意しました
 }
 ```
 
-### :last-child の margin-bottom を0に
+## :last-child の margin-bottom を0に
 ```
 @define-mixin lastchild {
 	&:last-child {
@@ -325,7 +325,7 @@ mixins を幾つかご用意しました
 }
 ```
 
-### 数値を半分に
+## 数値を半分に
 ```
 @define-mixin calc_half $prop, $value {
 	$(prop): calc($value / 2)px;
@@ -337,17 +337,19 @@ mixins を幾つかご用意しました
 width: 200px;
 ```
 
-### 数値を半分に
+## 数値を半分に
 ```
 @define-mixin calc_percent $prop, $value, $max {
 	$(prop): calc( ($value / $max) * 100 )%;
 }
+
+// Usage
 @mixin calc_percent width,560,960;
 ↓
 width: 58.33333%;
 ```
 
-### イージング系
+## イージング系
 ```
 @define-mixin anime $target, $time, $value {
 	@if $value ==  'ease-in-sine' {
