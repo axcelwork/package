@@ -12,11 +12,14 @@ var gulp = require("gulp"),
 
 gulp.task('stylus', function() {
   return gulp
-  .src([config.paths.src + config.paths.stylus,'!' + config.paths.src + '/stylus/_modules/*'])
+  .src([
+      config.paths.src + config.paths.stylus_dir + config.paths.stylus,
+      '!' + config.paths.src + config.paths.stylus_dir + '/_modules/*'
+  ])
   .pipe(cache( 'stylus' ))
   .pipe(plumber())
   .pipe(stylus())
   .pipe(autoprefixer(config.autoprefixer))
-  .pipe(gulpif(config.stylus_minify, minify()))
+  .pipe(gulpif(config.minify, minify()))
   .pipe(gulp.dest(config.paths.base));
 });

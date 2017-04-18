@@ -1,4 +1,6 @@
 @charset "utf-8";
+@import '../../_modules/mixin.css';
+
 /* ================ Icon Font ================= */
 @font-face {
     font-family: 'icomoon';
@@ -6,6 +8,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 /*
 SIL Open Font License, 1.1
 We subbed the Noto Sans Japanese font of Google Web Font.
@@ -28,11 +31,24 @@ We subbed the Noto Sans Japanese font of Google Web Font.
     font-weight: 700;
     font-style: normal;
 }
+
+
+
 html {
     font-size: 100%;
 }
 /* ================ Reset ================= */
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+html,body,
+div,span,
+object,iframe,
+h1,h2,h3,h4,h5,h6,
+p,blockquote,pre,abbr,address,cite,code,del,dfn,em,
+img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,dialog,figure,footer,header,hgroup,menu,nav,section,
+time,mark,audio,video {
     margin: 0;
     padding: 0;
     border: 0;
@@ -51,22 +67,25 @@ body {
     -webkit-text-size-adjust: none;
     font-family: 'ns', Meiryo, 'Hiragino Kaku Gothic Pro', Osaka, 'MS PGothic', Arial, Helvetica, Verdana, sans-serif;
     line-height: 1;
-    -webkit-font-feature-settings: "palt" 1;
-            font-feature-settings: "palt" 1;
+    font-feature-settings: "palt" 1;
 }
-article, aside, dialog, figure, footer, header, hgroup, nav, section {
+
+article,aside,dialog,figure,footer,header,hgroup,nav,section {
     display: block;
 }
-nav ul, ul, ol {
+nav ul,ul,ol {
     list-style: none;
 }
-blockquote, q {
+blockquote,q {
     quotes: none;
+
+    &:after,
+    &:before{
+        content: '';
+        content: none;
+    };
 }
-blockquote:after, blockquote:before, q:after, q:before{
-    content: '';
-    content: none;
-}
+
 *:before
 *:after {
     box-sizing: border-box;
@@ -78,12 +97,12 @@ a {
     vertical-align: baseline;
     background: transparent;
     -webkit-tap-highlight-color: transparent;
-    -webkit-tap-highlight-color: rgba(100, 100, 100, .5);
+    -webkit-tap-highlight-color: rgba(100,100,100,0.5);
     text-decoration: none;
     color: #333;
     box-sizing: border-box;
 
-    transition: all .45s cubic-bezier(0.215, 0.61, 0.355, 1);
+    @mixin anime all, .45s, 'ease-out-cubic';
 }
 img {
     display: block;
@@ -105,7 +124,8 @@ mark {
 del {
     text-decoration: line-through;
 }
-abbr[title], dfn[title] {
+abbr[title],
+dfn[title] {
     border-bottom: 1px dotted #000;
     cursor: help;
 }
@@ -121,17 +141,14 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
-input, select, button {
+input,select,button {
     vertical-align: middle;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    transition: all .45s cubic-bezier(0.215, 0.61, 0.355, 1);
+    appearance: none;
+    @mixin anime all, .45s, 'ease-out-cubic';
 }
 .lsf {
     font-family: 'icomoon';
     text-rendering: optimizeLegibility;
     font-smoothing: antialiased;
-    -webkit-font-feature-settings: "liga" 1, "dlig" 1;
-            font-feature-settings: "liga" 1, "dlig" 1;
+    font-feature-settings: "liga" 1, "dlig" 1;
 }

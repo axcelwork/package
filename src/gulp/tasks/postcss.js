@@ -6,17 +6,36 @@ var gulp = require("gulp"),
 
     postcss = require('gulp-postcss'),
     cssnext = require('postcss-cssnext'),
+    precss = require('precss'),
+    css_import = require("postcss-import"),
+    cssnano = require("cssnano"),
 
     config = require("../config/config");
 
 
 gulp.task('pcss', function() {
-  var processors = [ cssnext(config.autoprefixer) ];
+    var processors = [
+        css_import(),
+        cssnext({
+            'autoprefixer': {
+                'browsers': config.autoprefixer.browsers
+            }
+        }),
+        precss()
+    ];
 
-  return gulp
-  .src([config.paths.pcss])
-  .pipe(cache( 'pcss' ))
-  .pipe(plumber())
-  .pipe(postcss(processors))
-  .pipe(gulp.dest(config.paths.base));
+    // minify
+    if( config.minify ){
+        processors.push( cssnano( {autoprefixer: false} ) );
+    }
+
+    return gulp
+    .src([
+        config.paths.src + config.paths.pcss_dir + config.paths.pcss,
+        '!' + config.paths.src + config.paths.pcss_dir + '/_modules/*'
+    ])
+    .pipe( cache( 'pcss' ) )
+    .pipe( plumber() )
+    .pipe( postcss( processors ) )
+    .pipe( gulp.dest( config.paths.base ) );
 });

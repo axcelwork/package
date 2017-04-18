@@ -1,0 +1,17 @@
+@charset "utf-8";
+@import '../_modules/mixin.css';
+
+
+h1 {
+	@mixin psr;
+
+	@mixin calc_half width,400;
+
+	@mixin anime all, .45s, 'ease-out-cubic';
+
+	display: flex;
+
+	&:before {
+		color: #000;
+	}
+}

@@ -28,6 +28,13 @@ src
 |   ├ zip.js
 |   ├ backup.js
 |   └ watch.js
+└ pcss
+| ├ _modules
+| │ └ mixin.css
+| ├ cmn
+| │ └ css
+| │   └ reset.css
+| └ css
 └ stylus
  ├ _modules
  │ └ _common_func.styl
@@ -45,38 +52,40 @@ src
 
 ```
 module.exports = {
-  port : xxxx,
-  proxy : 'xxxxxx',
-  stylus_minify : false,
-  autoprefixer : {
-    browsers : ["last 2 versions", "ie 10", "ios 10", "android 4.2"]
-  },
-  zip_name : 'xxxxx.zip',
-  encoding : "utf-8",
+    port : 9999,
+    proxy : 'xxxxxx',
+    minify : false,
+    autoprefixer : {
+        browsers : ["last 2 versions", "ie 10", "ios 10", "android 4.2"],
+    },
+    zip_name : 'xxxxx.zip',
+    encoding : "utf-8",
 
-  paths : {
-    base : '../../htdocs',
-    dev : '../dev',
-    branches: '../../branches',
-    dist : '../../dist',
-    src : '../../src',
-    pcss : '/**/*.css',
-    stylus : '/stylus/**/*.styl',
-    js : '/**/*.js',
-    css : '/**/*.css',
-    html : '/**/*.html',
-    inc : '/**/*.inc',
-    xml : '/**/*.xml',
-    php : '/**/*.php',
-    json : '/**/*.json',
-    jpg : '/**/*.jpg',
-    gif : '/**/*.gif',
-    png : '/**/*.png',
-    svg : '/**/*.svg',
-    woff : '/**/*.woff',
-    woff2 : '/**/*.woff2',
-    image : '/**/image/*'
-  }
+    paths : {
+        base : '../../htdocs',
+        dev : '../dev',
+        branches: '../../branches',
+        dist : '../../dist',
+        src : '../../src',
+        stylus_dir : '/stylus',
+        pcss_dir : '/pcss',
+        pcss : '/**/*.css',
+        stylus : '/**/*.styl',
+        js : '/**/*.js',
+        css : '/**/*.css',
+        html : '/**/*.html',
+        inc : '/**/*.inc',
+        xml : '/**/*.xml',
+        php : '/**/*.php',
+        json : '/**/*.json',
+        jpg : '/**/*.jpg',
+        gif : '/**/*.gif',
+        png : '/**/*.png',
+        svg : '/**/*.svg',
+        woff : '/**/*.woff',
+        woff2 : '/**/*.woff2',
+        image : '/**/image/*'
+    }
 };
 ```
 
@@ -85,14 +94,18 @@ port : xxxx,
 proxy : 'xxxxxx'
 ```
 MAMP等ローカルサーバとの連携を行う設定です。
+
 `port` ... gulp を実行上のポート番号を指定。（0〜65536）
+
 `proxy` ... ローカルサーバのホストを指定。（localhost:8888 etc）
+
 
 ```
 stylus_minify : boolean
 ```
 stylus を圧縮するかの指定です。
 圧縮する場合は `true` 、そうでない場合は `false` を指定。
+
 
 ```
 autoprefixer : {
@@ -101,15 +114,18 @@ autoprefixer : {
 ```
 ブラウザベンダーのプレフィックスをどこまで適用するかの設定です。
 
+
 ```
 zip_name : 'xxxxx.zip'
 ```
 `zip` ファイルを作成する時の名前の設定です。
 
+
 ```
 encoding : "utf-8"
 ```
 `CSS` ファイルのエンコード設定です。
+
 
 ## Task
 ```
@@ -156,13 +172,50 @@ gulp.task('connect-sync', function(cb ) {
 ```
 gulp.task('stylus', function() {
   return gulp
-  .src([config.paths.src + config.paths.stylus,'!' + config.paths.src + '/stylus/_modules/*'])
+  .src([
+      config.paths.src + config.paths.stylus_dir + config.paths.stylus,
+      '!' + config.paths.src + config.paths.stylus_dir + '/_modules/*'
+  ])
   .pipe(cache( 'stylus' ))
   .pipe(plumber())
   .pipe(stylus())
   .pipe(autoprefixer(config.autoprefixer))
-  .pipe(gulpif(config.stylus_minify, minify()))
+  .pipe(gulpif(config.minify, minify()))
   .pipe(gulp.dest(config.paths.base));
+});
+
+
+```
+
+### PostCSSのコンパイル
+`stylus` のコンパイルを行うタスクです。
+
+```
+gulp.task('pcss', function() {
+    var processors = [
+        css_import(),
+        cssnext({
+            'autoprefixer': {
+                'browsers': config.autoprefixer.browsers
+            }
+        }),
+        precss()
+    ];
+
+    // minify
+    if( config.minify ){
+        processors.push( cssnano( {autoprefixer: false} ) );
+    }
+
+    return gulp
+    .src([
+        config.paths.src + config.paths.pcss_dir + config.paths.pcss,
+        '!' + config.paths.src + config.paths.pcss_dir + '/_modules/*'
+    ])
+    .pipe( cache( 'pcss' ) )
+    .pipe( plumber() )
+    .pipe( postcss( processors ) )
+    .pipe( gulp.dest( config.paths.base ) );
 });
 
 ```
@@ -216,5 +269,18 @@ gulp.task('bk', function() {
 	.src( config.paths.base + '/**/*' )
   .pipe(plumber())
   .pipe(gulp.dest( config.paths.branches + '/' + name));
+});
+```
+
+### Export
+`htdocs` 内の `css` を `src/pcss` ディレクトリにコピーをとるタスクです。
+
+```
+gulp.task('tocss', ['clean'], function() {
+	$base_path = config.paths.base + config.paths.css;
+
+	return gulp
+	.src( $base_path )
+	.pipe( gulp.dest( config.paths.src + config.paths.pcss_dir ) );
 });
 ```
