@@ -4,15 +4,10 @@ h1 {
 	top: 0;
 	left: 0;
 
-	width: calc(400 / 2)px;
+	width: 200px;
+	width: 58.33333%;
 
-	transition: all .45s cubic-bezier(0.215, 0.61, 0.355, 1);
-
-	display: -webkit-box;
-
-	display: -ms-flexbox;
-
-	display: flex
+	transition: all .45s cubic-bezier(0.215, 0.61, 0.355, 1)
 }
 h1:before{
 	color: #000

@@ -8,6 +8,7 @@ var gulp = require("gulp"),
     cssnext = require('postcss-cssnext'),
     precss = require('precss'),
     css_import = require("postcss-import"),
+    css_calc = require("postcss-calc"),
     cssnano = require("cssnano"),
 
     config = require("../config/config");
@@ -16,12 +17,13 @@ var gulp = require("gulp"),
 gulp.task('pcss', function() {
     var processors = [
         css_import(),
+        precss(),
+        css_calc(),
         cssnext({
             'autoprefixer': {
                 'browsers': config.autoprefixer.browsers
             }
-        }),
-        precss()
+        })
     ];
 
     // minify

@@ -6,10 +6,9 @@ h1 {
 	@mixin psr;
 
 	@mixin calc_half width,400;
+	@mixin calc_percent width,560,960;
 
 	@mixin anime all, .45s, 'ease-out-cubic';
-
-	display: flex;
 
 	&:before {
 		color: #000;
