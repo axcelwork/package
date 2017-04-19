@@ -6,7 +6,7 @@ var gulp = require("gulp"),
 requireDir( "../tasks", { recursive : true } );
 
 gulp.task('watch', function() {
-	gulp.watch( config.paths.src + config.paths.pcss,['reload', 'pcss'] );
+	gulp.watch( config.paths.src + config.paths.pcss,['pcss'] );
 	gulp.watch( config.paths.src + config.paths.stylus,['stylus'] );
 
 	gulp.watch(

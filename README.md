@@ -88,7 +88,7 @@ module.exports = {
     }
 };
 ```
-
+### port, proxy
 ```
 port : xxxx,
 proxy : 'xxxxxx'
@@ -100,27 +100,29 @@ MAMP等ローカルサーバとの連携を行う設定です。
 `proxy` ... ローカルサーバのホストを指定。（localhost:8888 etc）
 
 
+### minify
 ```
-stylus_minify : boolean
+minify : boolean
 ```
 stylus を圧縮するかの指定です。
 圧縮する場合は `true` 、そうでない場合は `false` を指定。
 
-
+### autoprefixer
 ```
 autoprefixer : {
-  browsers : ["last 2 versions", "ie 10", "ios 10", "android 4.2"]
-},
+    browsers : ["last 2 versions", "ie 10", "ios 10", "android 4.2"],
+}
 ```
 ブラウザベンダーのプレフィックスをどこまで適用するかの設定です。
 
 
+### zip_name
 ```
 zip_name : 'xxxxx.zip'
 ```
 `zip` ファイルを作成する時の名前の設定です。
 
-
+### encoding
 ```
 encoding : "utf-8"
 ```
@@ -137,7 +139,7 @@ gulp.task('default', ['watch','connect-sync']);
 
 ```
 gulp.task('watch', function() {
-	gulp.watch( config.paths.src + config.paths.pcss,['reload', 'pcss'] );
+	gulp.watch( config.paths.src + config.paths.pcss,['pcss'] );
 	gulp.watch( config.paths.src + config.paths.stylus,['stylus'] );
 
 	gulp.watch(
@@ -188,7 +190,7 @@ gulp.task('stylus', function() {
 ```
 
 ### PostCSSのコンパイル
-`stylus` のコンパイルを行うタスクです。
+`PostCSS` のコンパイルを行うタスクです。
 
 ```
 gulp.task('pcss', function() {
