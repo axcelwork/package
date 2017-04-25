@@ -11,6 +11,7 @@ module.exports = {
     paths : {
         base : '../../htdocs',
         dev : '../dev',
+        release : '../../release',
         branches: '../../branches',
         dist : '../../dist',
         src : '../../src',

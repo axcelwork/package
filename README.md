@@ -65,6 +65,7 @@ module.exports = {
         base : '../../htdocs',
         dev : '../dev',
         branches: '../../branches',
+        release : '../../release',
         dist : '../../dist',
         src : '../../src',
         stylus_dir : '/stylus',
@@ -191,6 +192,7 @@ gulp.task('stylus', function() {
 
 ### PostCSSのコンパイル
 `PostCSS` のコンパイルを行うタスクです。
+コンパイルする際に `release` ディレクトリとの差分を見て、変更があったファイルのみコンパイルするように。
 
 ```
 gulp.task('pcss', function() {
@@ -214,6 +216,7 @@ gulp.task('pcss', function() {
         config.paths.src + config.paths.pcss_dir + config.paths.pcss,
         '!' + config.paths.src + config.paths.pcss_dir + '/_modules/*'
     ])
+    .pipe( changed( config.paths.release + '/src' + config.paths.pcss_dir ), {hasChanged: changed.compareLastModifiedTime} )
     .pipe( cache( 'pcss' ) )
     .pipe( plumber() )
     .pipe( postcss( processors ) )
@@ -285,6 +288,21 @@ gulp.task('tocss', ['clean'], function() {
 	.src( $base_path )
 	.pipe( gulp.dest( config.paths.src + config.paths.pcss_dir ) );
 });
+```
+
+`htdocs` と `src` を `release` ディレクトリにコピーをとるタスク。
+
+```
+gulp.task('release', function() {
+	var htdocs_src = gulp.src( [ config.paths.base + '/**/*' ] )
+	.pipe( gulp.dest( config.paths.release + '/htdocs' ) );
+
+	var src_src = gulp.src( [ config.paths.src + config.paths.pcss_dir + config.paths.pcss ] )
+	.pipe( gulp.dest( config.paths.release + '/src' + config.paths.pcss_dir ) );
+
+	return merge(htdocs_src, src_src);
+});
+
 ```
 
 # PostCSS mixins

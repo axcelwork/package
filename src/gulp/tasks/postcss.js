@@ -2,6 +2,7 @@ var gulp = require("gulp"),
     gulpif = require("gulp-if"),
     plumber = require("gulp-plumber"),
     cache = require('gulp-cached'),
+    changed = require('gulp-changed'),
     browserSync = require('browser-sync'),
 
     postcss = require('gulp-postcss'),
@@ -30,12 +31,13 @@ gulp.task('pcss', function() {
     if( config.minify ){
         processors.push( cssnano( {autoprefixer: false} ) );
     }
-
+    
     return gulp
     .src([
         config.paths.src + config.paths.pcss_dir + config.paths.pcss,
         '!' + config.paths.src + config.paths.pcss_dir + '/_modules/*'
     ])
+    .pipe( changed( config.paths.release + '/src' + config.paths.pcss_dir ), {hasChanged: changed.compareLastModifiedTime} )
     .pipe( cache( 'pcss' ) )
     .pipe( plumber() )
     .pipe( postcss( processors ) )
