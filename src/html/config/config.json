@@ -1,0 +1,16 @@
+{
+    "common" : {
+        "og_type": "website",
+        "og_site_name": "",
+        "og_image": "",
+        "app_id": ""
+    },
+    "top" : {
+        "title": "",
+        "description": "",
+        "keywords": "",
+        "canonical": "",
+        "tw_share_txt": "",
+        "og_image": ""
+    }
+}

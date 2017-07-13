@@ -1,0 +1,3 @@
+@custom-media --pc-view print, screen and (min-width: 960px);
+@custom-media --tab-view only screen and (min-width:600px) and (max-width:959px);
+@custom-media --smp-view only screen and (max-width:599px);

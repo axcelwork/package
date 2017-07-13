@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+@import '../../../_modules/_component';
+
+@import '../../../_layout/reset';
+@import '../../../_layout/header/header';
+@import '../../../_layout/footer/footer';
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+}

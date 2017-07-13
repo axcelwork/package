@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title><%= config.top.title %></title>
+    <meta name="description" content="<%= config.top.description %>">
+    <meta name="keywords" content="<%= config.top.keywords %>">
+
+<%- include( '/html/_layout/cmn/cmn_meta' ) %>
+    <link rel="canonical" href="<%= config.top.canonical %>">
+
+    <meta property="og:type" content="<%= config.common.og_type %>">
+    <meta property="og:url" content="<%= config.top.canonical %>">
+    <meta property="og:site_name" content="<%= config.common.og_site_name %>">
+    <meta property="og:title" content="<%= config.top.title %>">
+    <meta property="og:description" content="<%= config.top.description %>">
+    <meta property="og:image" content="<%= config.top.og_image %>">
+    <meta property="fb:app_id" content="<%= config.common.app_id %>">
+
+<%- include( '/html/_layout/cmn/cmn_css' ) %>
+</head>
+<body>
+<%- include( '/html/_layout/cmn/analyze_body' ) %>
+
+<%- include( '/html/_layout/cmn/cmn_header', { page: 'top'} ) %>
+
+    <div id="wrapper">
+
+    </div>
+
+<%- include( '/html/_layout/cmn/cmn_footer', { page: 'top'} ) %>
+
+<%- include( '/html/_layout/cmn/cmn_js' ) %>
+
+    <script type="text/javascript" src="js/script.js"></script>
+
+<%- include( '/html/_layout/cmn/analyze_footer' ) %>
+</body>
+</html>
