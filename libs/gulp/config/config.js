@@ -1,13 +1,13 @@
 module.exports = {
-    port : XXXX,
-    proxy : 'localhost:XXXX',
+    port : 40000,
+    proxy : 'localhost:30000',
     minify : false,
     autoprefixer : {
         browsers : ["last 2 versions", "ie 10", "ios 10", "android 4.2"],
     },
     zip_name : 'xxxxx.zip',
     encoding : "utf-8",
-    dev_root : "",
+    dev_root : "/Users/yamaji/Works/MAMP/git/axcelwork.org/package/src/",
 
     paths : {
         base : '../../htdocs',

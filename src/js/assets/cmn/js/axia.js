@@ -48,7 +48,6 @@ var Axia = function( options ) {
 		break_point_change_event.initEvent('breakpoints', true, true);
 	}
 
-
 	var myquery = [];
 	var myquery_cl = [];
 
@@ -89,7 +88,9 @@ var Axia = function( options ) {
 		});
 	};
 
+
 	window.addEventListener( 'load', this.check_breakpoints );
+
 };
 
 
@@ -100,4 +101,70 @@ Axia.prototype.addEventListener = function( state, callback, isCapture ) {
 Axia.prototype.removeEventListener = function( state ){
 	if( !this.listeners[ state ] ) return;
 	this.listeners[ state ] = null;
+}
+
+
+
+Axia.prototype.getBrowser = function(){
+	var ua = window.navigator.userAgent.toLowerCase();
+	var ver = window.navigator.appVersion.toLowerCase();
+	var name = 'unknown';
+
+	if (ua.indexOf("msie") != -1){
+		if (ver.indexOf("msie 6.") != -1){ name = 'ie6'; }
+		 else if (ver.indexOf("msie 7.") != -1){ name = 'ie7'; }
+		 else if (ver.indexOf("msie 8.") != -1){ name = 'ie8'; }
+		 else if (ver.indexOf("msie 9.") != -1){ name = 'ie9'; }
+		 else if (ver.indexOf("msie 10.") != -1){ name = 'ie10'; }
+		 else{ name = 'ie'; }
+	}
+	else if(ua.indexOf('trident/7') != -1){ name = 'ie11'; }
+	else if (ua.indexOf('chrome') != -1){ name = 'chrome'; }
+	else if (ua.indexOf('safari') != -1){ name = 'safari'; }
+	else if (ua.indexOf('opera') != -1){ name = 'opera'; }
+	else if (ua.indexOf('firefox') != -1){ name = 'firefox'; }
+
+	return name;
+
+	var getOs = function(){
+		var ua = window.navigator.userAgent.toLowerCase();
+		var ver = window.navigator.appVersion.toLowerCase();
+		var name = 'unknown';
+
+		if(navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iPod') > 0 && navigator.userAgent.indexOf('Mobile') > 0 ){
+			name = 'ios';
+		}
+		else if( navigator.userAgent.indexOf('Android') > 0 && navigator.userAgent.indexOf('Mobile') > 0){
+			name = 'android';
+		}
+		else if(navigator.userAgent.indexOf('iPad') > 0 || navigator.userAgent.indexOf('Android') > 0){
+			name = 'tablet';
+		}
+		else {
+			name = 'pc';
+		}
+
+		return name;
+	};
+}
+
+Axia.prototype.getOs = function(){
+	var ua = window.navigator.userAgent.toLowerCase();
+	var ver = window.navigator.appVersion.toLowerCase();
+	var name = 'unknown';
+
+	if(navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('iPod') > 0 && navigator.userAgent.indexOf('Mobile') > 0 ){
+		name = 'ios';
+	}
+	else if( navigator.userAgent.indexOf('Android') > 0 && navigator.userAgent.indexOf('Mobile') > 0){
+		name = 'android';
+	}
+	else if(navigator.userAgent.indexOf('iPad') > 0 || navigator.userAgent.indexOf('Android') > 0){
+		name = 'tablet';
+	}
+	else {
+		name = 'pc';
+	}
+
+	return name;
 }

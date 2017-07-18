@@ -8,7 +8,7 @@ var gulp = require("gulp"),
     config = require("../config/config");
 
 gulp.task('ejs', function() {
-    var json = JSON.parse( fs.readFileSync( config.paths.dev + config.paths.html_dir + '/config/config.json' ) );
+    var json = JSON.parse( fs.readFileSync( config.paths.dev + config.paths.html_dir + '/_config/config.json' ) );
 
     return gulp
     .src( config.paths.dev + config.paths.html_dir + config.paths.assets_dir + config.paths.ejs )
@@ -19,7 +19,7 @@ gulp.task('ejs', function() {
 });
 
 gulp.task('ejs-layout', function() {
-    var json = JSON.parse( fs.readFileSync( config.paths.dev + config.paths.html_dir + '/config/config.json' ) );
+    var json = JSON.parse( fs.readFileSync( config.paths.dev + config.paths.html_dir + '/_config/config.json' ) );
 
     return gulp
     .src( config.paths.dev + config.paths.html_dir + config.paths.assets_dir + config.paths.ejs )
