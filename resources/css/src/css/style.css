@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+@import "../../_modules/_component.css";
+
+/* リセットCSSの読み込み */
+@import "../../_modules/reset";
+@import "../../_modules/print";

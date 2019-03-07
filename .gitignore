@@ -1,3 +1,2 @@
-/src/gulp/node_modules/
-/libs/gulp/node_modules/
-/libs/gulp/config/
+node_modules
+package-lock.json
